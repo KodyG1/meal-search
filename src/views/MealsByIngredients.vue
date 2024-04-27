@@ -1,14 +1,14 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import store from '../store'
 import Meals from '../components/Meals.vue'
 
 const meals = computed(() => store.state.mealsByIngredient)
-const ingredient = computed(() => store.state.ingredient)
-const route = useRoute()
-onMounted(() => {
 
+const route = useRoute()
+
+onMounted(() => {
     store.dispatch('searchMealsByIngredient', route.params.ingredient)
 })
 </script>
